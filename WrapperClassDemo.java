@@ -8,8 +8,9 @@ import java.util.*;
  */
 public class WrapperClassDemo {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
-		
+		/*
 		// Integer objects and int primitives are declared differently
 		Integer intObject1 = Integer.valueOf(10);
 		Integer intObject2 = Integer.valueOf(11);
@@ -44,5 +45,27 @@ public class WrapperClassDemo {
 		int intPrimitive3 = intObject1.intValue();
 		// Convert a primitive to an Integer object (called "boxing")
 		Integer intObject3 = Integer.valueOf(intPrimitive1);
+		*/
+		System.out.print("Enter number of value to be sorted: ");
+		Scanner scnr = new Scanner(System.in);
+		Integer[] IntegerObjs = new Integer[Integer.parseInt(scnr.next())];
+		for(int i = 0; i < IntegerObjs.length; i++) {
+			System.out.print("Enter value (" + (i+1) + "): ");
+			IntegerObjs[i] = Integer.parseInt(scnr.next());
+		}
+		//sort
+		int n = IntegerObjs.length;
+		Integer temp;
+		for (int i = n - 2; i >= 0; i--) {
+			for (int j = 0; j <= i; j++) {
+				if (IntegerObjs[j].compareTo(IntegerObjs[j + 1]) > 0) {
+					temp = IntegerObjs[j + 1];
+					IntegerObjs[j + 1] = IntegerObjs[j];
+					IntegerObjs[j] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < IntegerObjs.length; i++) 
+			System.out.println(IntegerObjs[i].toString());
 	}
 }
